@@ -7,7 +7,8 @@ HOSTAPD_GLOBAL=/var/run/hostapd_global
 HOSTAPD_CONF=/usr/share/wl18xx/hostapd.conf
 HOSTAPD_BIN_DIR=/usr/local/bin
 IP_ADDR=192.168.43.1
-DHCP_CONF=u[d]hcpd.conf
+DHCP_CONF=udhcpd.conf
+DHCP_CONF_PROC=u[d]hcpd.conf
 
 ########## body ##########
 
@@ -53,7 +54,7 @@ $HOSTAPD_BIN_DIR/hostapd_cli -g $HOSTAPD_GLOBAL raw ADD $WLAN config=$HOSTAPD_CO
 ifconfig $WLAN $IP_ADDR netmask 255.255.255.0 up
 
 ### start udhcpd server, if not started
-output=`ps | grep /usr/share/wl18xx\$DHCP_CONF`
+output=`ps | grep /usr/share/wl18xx\$DHCP_CONF_PROC`
 set -- $output
 echo $output
 if [ -z "$output" ]; then
