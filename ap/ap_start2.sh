@@ -6,7 +6,7 @@ WLAN=wlan2
 HOSTAPD_GLOBAL=/var/run/hostapd_global
 HOSTAPD_CONF=/usr/share/wl18xx/hostapd2.conf
 HOSTAPD_BIN_DIR=/usr/local/bin
-IP_ADDR=192.168.23.1
+IP_ADDR=192.168.53.1
 DHCP_CONF=udhcpd2.conf
 DHCP_CONF_PROC=u[d]hcpd2.conf
 
