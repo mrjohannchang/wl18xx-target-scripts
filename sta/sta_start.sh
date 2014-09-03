@@ -2,7 +2,7 @@
 
 if ps | grep -v grep | grep wpa_supplicant > /dev/null
 then
-    echo "wpa_supplicant is already runningx"
+    echo "wpa_supplicant is already running"
     exit 0
 fi
 
