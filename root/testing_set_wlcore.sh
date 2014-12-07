@@ -10,7 +10,7 @@ hw_type_fname=${root_path}/testing_wl_hw_type.txt
 
 wlconf_path=/usr/sbin/wlconf
 ini_files_path=${wlconf_path}/official_inis
-ini_file=WL8_System_parameters.ini
+ini_file=WL8_TESTING_INI.ini
 
 wl18xx_conf_bin=/lib/firmware/ti-connectivity/wl18xx-conf.bin
 
