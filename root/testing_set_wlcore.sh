@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # $1 = mimo/siso20/siso40
-# $2 = hw type - hdk/com8 
 
 echo $@
 
@@ -14,17 +13,9 @@ ini_file=WL8_TESTING_INI.ini
 
 wl18xx_conf_bin=/lib/firmware/ti-connectivity/wl18xx-conf.bin
 
-if [ "$2" != "" ]; then
-    echo $2 > $hw_type_fname
-fi
-
-hw_type=`cat $hw_type_fname 2> /dev/null`
-
 ht_mimo=0
 ht_siso20=2
 ht_siso40=1
-num_of_ant2_4=1
-low_band_component=2
 
 #
 # verify ht_mode, options are: siso20, siso40, mimo
@@ -43,32 +34,17 @@ else
     exit 1
 fi
 
-#
-# select chip type, options are: hdk or com8
-#
-if [ "$hw_type" == "hdk" ] || [ "$hw_type" == "HDK" ] ; then
-	low_band_component=2
-elif [ "$hw_type" == "com8" ] || [ "$hw_type" == "COM8" ]  ; then
-	low_band_component=0xff
-else
-	echo "wlcore: not supported board type"
-	exit 1
-fi
-
 cd ${wlconf_path}
-./wlconf -o ${wl18xx_conf_bin} -I ${ini_files_path}/${ini_file}
 ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.ht.mode=${ht_mode}
-./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.number_of_assembled_ant2_4=${num_of_ant2_4}
-./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.low_band_component=${low_band_component}
 
 if [ "$3" != "" ]; then
     if [ "$3" == "no-a-band" ]; then
-#
-# disabling A band is done by setting number_of_assembled_ant5 to 0
-#
-	./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.number_of_assembled_ant5=0
+        #
+        # disabling A band is done by setting number_of_assembled_ant5 to 0
+        #
+        ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.number_of_assembled_ant5=0
     elif [ "$3" == "no-recovery" ]; then
-	./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set core.recovery.no_recovery=1
+        ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set core.recovery.no_recovery=1
     else
 	echo "wlcore: not supported"
 	exit 1
@@ -77,12 +53,12 @@ fi
 
 if [ "$4" != "" ]; then
     if [ "$4" == "no-a-band" ]; then
-#
-# disabling A band is done by setting number_of_assembled_ant5 to 0
-#
-	./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.number_of_assembled_ant5=0
+        #
+        # disabling A band is done by setting number_of_assembled_ant5 to 0
+        #
+        ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.number_of_assembled_ant5=0
     elif [ "$4" == "no-recovery" ]; then
-	./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set core.recovery.no_recovery=1
+        ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set core.recovery.no_recovery=1
     else
 	echo "wlcore: not supported"
 	exit 1
