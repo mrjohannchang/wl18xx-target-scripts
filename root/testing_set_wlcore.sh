@@ -56,7 +56,6 @@ else
 fi
 
 cd ${wlconf_path}
-./wlconf -o ${wl18xx_conf_bin} -I ${ini_files_path}/${ini_file}
 ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.ht.mode=${ht_mode}
 ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.number_of_assembled_ant2_4=${num_of_ant2_4}
 ./wlconf -i ${wl18xx_conf_bin} -o ${wl18xx_conf_bin} --set wl18xx.phy.low_band_component=${low_band_component}
