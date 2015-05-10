@@ -3,22 +3,30 @@
 ########## variables ##########
 
 WLAN=wlan1
-HOSTAPD_GLOBAL=/var/run/hostapd_global
+WLAN2=wlan2
 DHCP_CONF=ud[h]cpd.conf
+DHCP_CONF2=ud[h]cpd2.conf
 
 ########## body ##########
 
-echo "Terminating #WLAN"
-hostapd_cli -g $HOSTAPD_GLOBAL raw REMOVE $WLAN
-
-output=`ps | grep $DHCP_CONF`
-set -- $output
-if [ -n "$output" ]; then
- kill $1
+echo "Terminating DHCP"
+if [ -d /sys/class/net/$WLAN1 ]
+then 
+  output=`ps | grep $DHCP_CONF`
+  set -- $output
+  if [ -n "$output" ]; then
+    kill $1
+  fi
 fi
 
-if [ -d /sys/class/net/$WLAN ]
+if [ -d /sys/class/net/$WLAN2 ]
 then
- iw $WLAN del
+  output=`ps | grep $DHCP_CONF2`
+  set -- $output
+  if [ -n "$output" ]; then
+    kill $1
+  fi
 fi
 
+echo "Terminating hostapd"
+killall hostapd
