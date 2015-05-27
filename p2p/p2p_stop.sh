@@ -1,3 +1,3 @@
 #!/bin/sh
 
-wpa_cli -ip2p0 terminate
+wpa_cli -iwlan0 terminate
