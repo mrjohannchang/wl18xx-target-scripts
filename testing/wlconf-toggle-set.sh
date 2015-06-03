@@ -42,6 +42,11 @@ if [ "$3" == "1" ]; then
 	# replace STUB with value.
 	echo "Enabling Feature: " $FEATURE
 	sed 's/STUB0000000/0x00000001/' tmp.txt > tmp1.txt
+elif [ "$3" == "2" ]; then
+        #Set it to "2"
+        # replace STUB with value.
+        echo "Enabling Feature: " $FEATURE
+        sed 's/STUB0000000/0x00000002/' tmp.txt > tmp1.txt
 else	
 	#Turn it OFF	
 	# replace STUB with value.
