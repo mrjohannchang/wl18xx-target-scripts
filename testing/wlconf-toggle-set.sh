@@ -22,14 +22,15 @@ BIN_PATH=$1
 FEATURE=$2
 MODE=$3
 
-if [ "$1"=="def" ]; then
+if [ $1 == "def" ]; then
 	BIN_PATH="/lib/firmware/ti-connectivity/wl18xx-conf.bin"
         echo ""
 fi
 
-if [ -d $BIN_PATH ]; then
+if [ ! -f $BIN_PATH ]; then
 
-        echo " *** Bad conf file path ***"
+        echo ""
+		echo " *** bin file not found : " $BIN_PATH
         echo ""
         print_help
 exit
@@ -46,9 +47,9 @@ cd /usr/sbin/wlconf
 
 #find feature place and replace with STUB
 case $FEATURE in
-                'dual')   sed 's/0x0/STUB/2' org_conf.txt > tmp.txt;;
-                'zigbee') sed 's/0x0/STUB/3' org_conf.txt > tmp.txt;;
-                'sync')   sed 's/0x0/STUB/4' org_conf.txt > tmp.txt;;
+                'dual')   sed '4 s/0x0000/STUB/2' org_conf.txt > tmp.txt;;
+                'zigbee') sed '4 s/0x0000/STUB/3' org_conf.txt > tmp.txt;;
+                'sync')   sed '4 s/0x0000/STUB/4' org_conf.txt > tmp.txt;;
                 *) echo "Please enter dual/zigbee/sync"
 esac
 
