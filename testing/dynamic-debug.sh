@@ -85,7 +85,11 @@ function set_debug_level()
 
 }
 
-
+# print help and exit if no argument were supplied
+if [ $# -eq 0 ]; then
+    usage
+    exit
+fi 
 
 if [[ $1 == "fw" ]]
 then    
@@ -94,8 +98,8 @@ then
     
 	echo ""
 	echo "Configuring FW debug :"
-    echo "echo 0x"$result ">  /sys/kernel/debug/ieee80211/phy0/wlcore/wl18xx/firmware_traces"
-    #echo $result >  /sys/kernel/debug/ieee80211/phy0/wlcore/wl18xx/firmware_traces 
+    echo "echo 0x"$result ">  /sys/kernel/debug/ieee80211/phy0/wlcore/wl18xx/dynamic_fw_traces"
+    echo $result >  /sys/kernel/debug/ieee80211/phy0/wlcore/wl18xx/dynamic_fw_traces
 fi
 
 if [[ $1 == "driver" ]]
