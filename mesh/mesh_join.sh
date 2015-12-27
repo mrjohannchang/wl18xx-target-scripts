@@ -26,7 +26,7 @@ else
     echo $WPA_CLI set_network $NETID key_mgmt NONE >> /usr/share/wl18xx/temp.txt
 fi
 
-echo $WPA_CLI select_network $NETID >> /usr/share/wl18xx/temp.txt
+echo $WPA_CLI enable_network $NETID >> /usr/share/wl18xx/temp.txt
 chmod 777 /usr/share/wl18xx/temp.txt
 sh /usr/share/wl18xx/temp.txt
 rm /usr/share/wl18xx/temp.txt
