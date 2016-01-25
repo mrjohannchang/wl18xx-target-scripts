@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ps | grep -v grep | grep wpa_supplicant > /dev/null
+if ps -w | grep -v grep | grep wpa_supplicant | grep wlan0 > /dev/null
 then
     echo "wpa_supplicant is already running"
     exit 0
