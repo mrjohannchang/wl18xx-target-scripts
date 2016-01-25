@@ -16,4 +16,9 @@ wpa_supplicant -e/usr/share/wl18xx/entropy.bin \
 	-imesh0 -Dnl80211 -c wpa_supplicant.conf &
 
 sleep 1	
+
+iw phy phy0 set rts 0
+
 ifconfig mesh0 10.20.30.40 netmask 255.255.255.0
+
+
