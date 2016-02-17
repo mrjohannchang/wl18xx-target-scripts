@@ -13,7 +13,7 @@ then
 fi
 
 wpa_supplicant -e/usr/share/wl18xx/entropy.bin \
-	-imesh0 -Dnl80211 -c wpa_supplicant.conf &
+	-imesh0 -Dnl80211 -c mesh_supplicant.conf &
 
 sleep 1	
 
