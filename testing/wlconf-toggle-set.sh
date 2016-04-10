@@ -8,7 +8,7 @@ print_help()
         echo "      Feature Options: "       
 		echo "      		'dual' 		- Dual Antenna"       
 		echo "      		'zigbee'	- ZigBee Coex"       
-		echo "      		'sync'		- Time Sync (1-Station, 2 - AP)"
+		echo "      		'sync'		- Time Sync (1-Station, 2-AP, 3-Mesh)"
 }
 
 # print help and exit if no argument were supplied
@@ -63,6 +63,11 @@ elif [ "$3" == "2" ]; then
         # replace STUB with value.
         echo "Enabling Feature: " $FEATURE
         sed 's/STUB[^ ]*/0x00000002,/' tmp.txt > updated_conf.txt
+elif [ "$3" == "3" ]; then
+	#Set it to "3"
+	# replace STUB with value.
+        echo "Enabling Feature: " $FEATURE
+        sed 's/STUB[^ ]*/0x00000003,/' tmp.txt > updated_conf.txt
 else	
 	#Turn it OFF	
 	# replace STUB with value.
