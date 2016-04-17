@@ -1,4 +1,6 @@
 #!/bin/sh
+killall wpa_supplicant
+killall hostapd
 
 rmmod wlcore_sdio
 rmmod wl18xx
@@ -8,5 +10,3 @@ rmmod mac80211
 rmmod cfg80211
 rmmod compat
 
-killall wpa_supplicant
-killall hostapd
