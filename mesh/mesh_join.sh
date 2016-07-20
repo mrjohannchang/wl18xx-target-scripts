@@ -6,8 +6,8 @@ if [ $# -eq 0 ] || [ $# -eq 1 ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; the
     echo ""
     echo "You must specify channel freq and Mesh ssid"
 	echo "For secured link, add psk"
-    echo "format: $0 [Mesh SSID] [freq] [psk]"
-    echo ""
+    echo "format: $0 [Mesh SSID] [freq(MHZ)] [psk]"
+    echo "e.g. ./mesh_join.sh SSID 2412"
     exit
 fi
 
